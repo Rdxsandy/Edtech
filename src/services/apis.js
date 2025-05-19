@@ -1,6 +1,6 @@
 
 
-const BASE_URL = "https://backend1-0hp1.onrender.com;
+const BASE_URL = "https://backend1-0hp1.onrender.com";
 
 
 // AUTH ENDPOINTS
