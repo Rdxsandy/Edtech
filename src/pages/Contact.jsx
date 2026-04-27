@@ -19,7 +19,7 @@ const Contact = () => {
           <ContactForm />
         </div>
       </div>
-      <div className="flex-row">
+      <div className="flex flex-col">
         <h2 className="mt-10 text-4xl font-semibold text-center text-white">
           Review form other Learners
         </h2>

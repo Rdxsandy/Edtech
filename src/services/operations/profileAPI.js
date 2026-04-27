@@ -31,7 +31,7 @@ export function getUserDetails(token, navigate) {
     } catch (error) {
       dispatch(logout(navigate))
       console.log("GET_USER_DETAILS API ERROR............", error)
-      toast.error("Could Not Get User Details")
+      toast.error(error.response?.data?.message || error.message || "Could Not Get User Details")
     }
     toast.dismiss(toastId)
     dispatch(setLoading(false))
@@ -61,7 +61,7 @@ export async function getUserEnrolledCourses(token) {
     result = response.data.data
   } catch (error) {
     console.log("GET_USER_ENROLLED_COURSES_API API ERROR............", error)
-    toast.error("Could Not Get Enrolled Courses")
+    toast.error(error.response?.data?.message || error.message || "Could Not Get Enrolled Courses")
   }
   toast.dismiss(toastId)
   return result
@@ -79,7 +79,7 @@ export async function getInstructorData(token) {
     result = response?.data?.courses
   } catch (error) {
     console.log("GET_INSTRUCTOR_DATA_API API ERROR............", error)
-    toast.error("Could Not Get Instructor Data")
+    toast.error(error.response?.data?.message || error.message || "Could Not Get Instructor Data")
   }
   toast.dismiss(toastId)
   return result

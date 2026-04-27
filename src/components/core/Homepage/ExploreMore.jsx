@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, memo } from "react";
 import { HomePageExplore } from "../../../data/homepage-explore";
 import HighlightText from "./HighlightText";
 import CourseCard from "./CourseCard";
@@ -11,41 +11,42 @@ const tabsName = [
   "Career paths",
 ];
 
-const ExploreMore = () => {
+const ExploreMore = memo(() => {
   const [currentTab, setCurrentTab] = useState(tabsName[0]);
   const [courses, setCourses] = useState(HomePageExplore[0].courses);
   const [currentCard, setCurrentCard] = useState(
     HomePageExplore[0].courses[0].heading
   );
 
-  const setMyCards = (value) => {
+  const setMyCards = useCallback((value) => {
     setCurrentTab(value);
-    const result = HomePageExplore.filter((course) => course.tag === value);
-    if (result.length > 0) {
-      setCourses(result[0].courses);
-      setCurrentCard(result[0].courses[0].heading);
+    const result = HomePageExplore.find((course) => course.tag === value);
+    if (result) {
+      setCourses(result.courses);
+      setCurrentCard(result.courses[0].heading);
     }
-  };
+  }, []);
 
   return (
-    <div className="mt-10">
-      <div className="text-4xl font-semibold text-center text-white">
+    <div className="mt-10 px-4">
+      <div className="text-3xl sm:text-4xl font-semibold text-center text-white">
         Unlock the <HighlightText text="Power of code" />
       </div>
 
-      <p className="mt-3 text-center text-richblack-300">
+      <p className="mt-3 text-center text-richblack-300 text-sm sm:text-base">
         Learn to build anything you can imagine
       </p>
 
-      <div className="flex flex-row mx-auto mt-5 rounded-full w-[90%] md:w-[50%] bg-richblack-800 mb-5 px-1 py-1">
+      {/* Tab bar — scrollable on small screens */}
+      <div className="flex flex-row mx-auto mt-5 rounded-full w-full sm:w-[80%] md:w-[60%] bg-richblack-800 mb-5 px-1 py-1 overflow-x-auto scrollbar-none">
         {tabsName.map((element, index) => (
           <div
             key={index}
-            className={`text-[16px] flex flex-row items-center justify-center gap-2 ${
+            className={`text-[13px] sm:text-[15px] flex-shrink-0 flex flex-row items-center justify-center gap-2 ${
               currentTab === element
                 ? "text-richblack-5 bg-richblack-900 font-medium"
                 : "text-richblack-200"
-            } transition-all rounded-full duration-300 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5 px-4 md:px-7 py-2`}
+            } transition-all rounded-full duration-300 cursor-pointer hover:bg-richblack-900 hover:text-richblack-5 px-3 sm:px-5 py-2`}
             onClick={() => setMyCards(element)}
           >
             {element}
@@ -53,9 +54,7 @@ const ExploreMore = () => {
         ))}
       </div>
 
-      <div className="lg:h-[150px]"></div>
-
-      <div className="flex flex-wrap justify-center w-full gap-10 px-4 lg:justify-between mt-7 lg:mt-0 lg:px-0">
+      <div className="flex flex-wrap justify-center w-full gap-6 sm:gap-8 mt-7">
         {courses.map((element, index) => (
           <CourseCard
             key={index}
@@ -67,6 +66,7 @@ const ExploreMore = () => {
       </div>
     </div>
   );
-};
+});
 
+ExploreMore.displayName = "ExploreMore";
 export default ExploreMore;

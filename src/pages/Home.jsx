@@ -29,13 +29,13 @@ const Home = () => {
           Empower your Future With
           <HighlightText text={"Coding Skills"} />
         </div>
-        <div className="w-[90%] mt-1 text-center text-richblack-300 text-lg px-40 py-3">
+        <div className="w-[90%] mt-1 text-center text-richblack-300 text-sm md:text-lg px-4 md:px-10 lg:px-40 py-3">
           With our online coding courses, you can learn at your own pace, from
           anywhere in the world and get access to a wealth of resources,
           including hands-on projects, quizzes, and personalized feedback from
           instructors.
         </div>
-        <div className="flex flex-row mt-8 gap-14">
+        <div className="flex flex-col sm:flex-row mt-8 gap-4 sm:gap-14">
           <CTAButton active={true} linkto={"/signup"}>
             {" "}
             Learn More{" "}
@@ -47,13 +47,13 @@ const Home = () => {
           </CTAButton>
         </div>
 
-        <div className="flex justify-center mt-7 shadow-blue-200 mb-7">
+        <div className="flex justify-center mt-7 mb-7">
           <video
             muted
             loop
             autoPlay
             controls
-            className="w-3/4 h-1/2 shadow-custom-skyblue"
+            className="w-[90%] md:w-3/4 h-auto shadow-custom-skyblue"
           >
             <source src={Banner} type="video/mp4" />
           </video>
@@ -89,9 +89,9 @@ const Home = () => {
 
         {/* code section 2 */}
 
-        <div className="flex flex-row mr-[30%] ">
+        <div className="flex flex-col lg:flex-row w-full lg:mr-[30%]">
           <CodeBlocks
-            position="lg: flex-row-reverse "
+            position="lg:flex-row-reverse"
             heading={
               <div className="text-4xl font-semibold">
                 Unlock Your
@@ -121,11 +121,11 @@ const Home = () => {
       {/* section2 */}
 
       <div className="bg-pure-greys-5 text-richblack-700">
-        <div className="homepage_bg h-[200px]">
-          <div className="flex flex-col items-center justify-between w-11/12 gap-5 mx-uto flex2 item-cs-center max-w-maxContent">
+        <div className="homepage_bg h-[300px] sm:h-[200px]">
+          <div className="flex flex-col items-center justify-between w-11/12 gap-5 mx-auto max-w-maxContent">
             <div className="h-[80px]"></div>
 
-            <div className="flex flex-row gap-16 text-white">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-16 text-white">
               <CTAButton active={true} linkto={"/signup"}>
                 <div className="flex items-center gap-2 ">
                   Explore to catalog
@@ -145,19 +145,19 @@ const Home = () => {
 
         <div className="w-[11/12] flex flex-col gap-5 items-center max-w-maxContent mx-auto">
           {/* divone */}
-          <div className="flex flex-row items-center mx-auto w-[70%]  mb-10 mt-24">
-            <div className="text-4xl font-semibold w-[40%] mx-14">
+          <div className="flex flex-col lg:flex-row items-center mx-auto w-[90%] lg:w-[70%] mb-10 mt-14 lg:mt-24">
+            <div className="text-3xl lg:text-4xl font-semibold w-full lg:w-[45%] lg:mx-14 text-center lg:text-left mb-6 lg:mb-0">
               Get The Skill You Need for a
               <HighlightText text={"job that is in demand"} />
             </div>
             {/* divtwo */}
-            <div className="flex flex-col gap-5 w-[35%] mx-14">
+            <div className="flex flex-col gap-5 w-full lg:w-[40%] lg:mx-14 items-center lg:items-start text-center lg:text-left">
               <div className="text-[14px] text-richblack-600">
                 “Our EdTech platform leverages cutting-edge technology to create
                 engaging, personalized learning experiences. We provide a wide
                 range of digital tools"
               </div>
-              <div className="w-[100px]">
+              <div className="w-[150px]">
                 <CTAButton active={true} linkto={"/signup"}>
                   Learn More
                 </CTAButton>

@@ -16,7 +16,7 @@ const CodeBlocks = ({
 }) => {
   return (
     <div
-      className={`flex flex-col lg:flex-row ${position} my-20 w-[80%] mx-[10%] lg:mx-[20%] items-center gap-5 lg:gap-1`}
+      className={`flex flex-col lg:flex-row ${position} my-20 w-[95%] lg:w-[80%] mx-auto items-center gap-5 lg:gap-1`}
     >
       {/* section 1 */}
       <div className="w-full lg:w-[75%] flex flex-col gap-3 max-h-[80%]">
@@ -42,7 +42,7 @@ const CodeBlocks = ({
         </div>
       </div>
       {/* section 2 */}
-      <div className="flex flex-row h-fit w-full lg:w-[1000px] gap-2 px-5 lg:px-40">
+      <div className="flex flex-row h-fit w-full lg:w-[500px] gap-2 px-2 sm:px-5 lg:px-10">
         <div className="flex flex-col text-center w-[10%] text-richblack-400 font-inter font-bold">
           {[...Array(9)].map((_, i) => (
             <p key={i}>{i + 1}</p>

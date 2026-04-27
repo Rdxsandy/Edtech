@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import ReactStars from "react-rating-stars-component";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "../../App.css";
-
-// Icons
 import { FaStar } from "react-icons/fa";
-
-// Correct Swiper modules import
 import { Autoplay, FreeMode, Pagination } from "swiper/modules";
-
-// API connector and endpoint
 import { apiConnector } from "../../services/apiConnector";
 import { ratingsEndpoints } from "../../services/apis";
 
@@ -24,40 +15,50 @@ function ReviewSlider() {
   const truncateWords = 15;
 
   useEffect(() => {
+    let isMounted = true;
     (async () => {
-      const { data } = await apiConnector(
-        "GET",
-        ratingsEndpoints.REVIEWS_DETAILS_API
-      );
-      if (data?.success) {
-        setReviews(data?.data);
+      try {
+        const { data } = await apiConnector(
+          "GET",
+          ratingsEndpoints.REVIEWS_DETAILS_API
+        );
+        if (data?.success && isMounted) {
+          setReviews(data?.data);
+        }
+      } catch (err) {
+        // silently fail if reviews can't be fetched
       }
     })();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
+  if (!reviews.length) return null;
+
   return (
-    <div className="text-white">
-      <div className="my-[50px] h-[184px] max-w-maxContentTab lg:max-w-maxContent">
+    <div className="text-white w-full">
+      <div className="my-[50px] max-w-maxContentTab lg:max-w-maxContent mx-auto">
         <Swiper
-          slidesPerView={4}
-          spaceBetween={25}
-          loop={true}
+          slidesPerView={1}
+          spaceBetween={16}
+          loop={reviews.length >= 4}
           freeMode={true}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
           modules={[FreeMode, Pagination, Autoplay]}
+          breakpoints={{
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 25 },
+            1280: { slidesPerView: 4, spaceBetween: 25 },
+          }}
           className="w-full"
         >
-          {reviews.map((review, i) => {
-            console.log("Review:", review);
-            return <SwiperSlide key={i}>{/* ... */}</SwiperSlide>;
-          })}
-
           {reviews.map((review, i) => (
             <SwiperSlide key={i}>
-              <div className="flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
+              <div className="flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25 h-[180px] rounded-md">
                 <div className="flex items-center gap-4">
                   <img
                     src={
@@ -67,10 +68,13 @@ function ReviewSlider() {
                     }
                     alt="User"
                     className="object-cover rounded-full h-9 w-9"
+                    loading="lazy"
                   />
                   <div className="flex flex-col">
-                    <h1 className="font-semibold text-richblack-5">{`${review?.user?.lastName}`}</h1>
-                    <h2 className="text-[12px] font-medium text-richblack-500">
+                    <h1 className="font-semibold text-richblack-5 truncate max-w-[150px]">
+                      {`${review?.user?.firstName} ${review?.user?.lastName}`}
+                    </h1>
+                    <h2 className="text-[12px] font-medium text-richblack-500 truncate max-w-[150px]">
                       {review?.course?.courseName}
                     </h2>
                   </div>
@@ -106,4 +110,4 @@ function ReviewSlider() {
   );
 }
 
-export default ReviewSlider;
+export default React.memo(ReviewSlider);

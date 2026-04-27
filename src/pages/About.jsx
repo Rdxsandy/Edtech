@@ -18,12 +18,12 @@ import Footer from "../components/common/Footer";
 const About = () => {
   return (
     <div>
-      <section className="bg-richblack-700">
+    <section className="bg-richblack-700">
         <div className="relative flex flex-col justify-between w-11/12 gap-10 mx-auto text-center text-white max-w-maxContent">
-          <header className="mx-auto py-20 text-4xl font-semibold lg:w-[70%]">
+          <header className="mx-auto py-12 lg:py-20 text-3xl lg:text-4xl font-semibold lg:w-[70%]">
             Driving Innovation in Online Education for a
             <HighlightText text={"Brighter Future"} />
-            <p className="mx-auto mt-3 text-center text-base font-medium text-richblack-300 lg:w-[95%]">
+            <p className="mx-auto mt-3 text-center text-sm sm:text-base font-medium text-richblack-300 lg:w-[95%]">
               Studynotion is at the forefront of driving innovation in online
               education. We're passionate about creating a brighter future by
               offering cutting-edge courses, leveraging emerging technologies,
@@ -31,10 +31,10 @@ const About = () => {
             </p>
           </header>
           <div className="sm:h-[70px] lg:h-[150px]"></div>
-          <div className="absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5">
-            <img src={BannerImage1} alt="" />
-            <img src={BannerImage2} alt="" />
-            <img src={BannerImage3} alt="" />
+          <div className="absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-2 lg:gap-5">
+            <img src={BannerImage1} alt="About us 1" loading="lazy" className="rounded-md" />
+            <img src={BannerImage2} alt="About us 2" loading="lazy" className="rounded-md" />
+            <img src={BannerImage3} alt="About us 3" loading="lazy" className="rounded-md" />
           </div>
         </div>
       </section>
@@ -79,12 +79,12 @@ const About = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col items-center justify-between lg:gap-10 lg:flex-row">
-            <div className="my-24 flex lg:w-[40%] flex-col gap-10">
-              <h1 className="bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%] ">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between lg:gap-10">
+            <div className="my-12 lg:my-24 flex lg:w-[50%] flex-col gap-6 lg:gap-10 text-center lg:text-left">
+              <h1 className="bg-gradient-to-b from-[#FF512F] to-[#F09819] bg-clip-text text-3xl lg:text-4xl font-semibold text-transparent">
                 Our Vision
               </h1>
-              <p className="text-base font-medium text-richblack-300 lg:w-[95%]">
+              <p className="text-sm sm:text-base font-medium text-richblack-300 lg:w-[95%]">
                 With this vision in mind, we set out on a journey to create an
                 e-learning platform that would revolutionize the way people
                 learn. Our team of dedicated experts worked tirelessly to
@@ -93,11 +93,11 @@ const About = () => {
                 dynamic and interactive learning experience.
               </p>
             </div>
-            <div className="my-24 flex lg:w-[40%] flex-col gap-10">
-              <h1 className="bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text text-4xl font-semibold lg:w-[70%] ">
+            <div className="my-12 lg:my-24 flex lg:w-[40%] flex-col gap-6 lg:gap-10 text-center lg:text-left">
+              <h1 className="bg-gradient-to-b from-[#1FA2FF] via-[#12D8FA] to-[#A6FFCB] text-transparent bg-clip-text text-3xl lg:text-4xl font-semibold">
                 Our Mission
               </h1>
-              <p className="text-base font-medium text-richblack-300 lg:w-[95%]">
+              <p className="text-sm sm:text-base font-medium text-richblack-300 lg:w-[95%]">
                 Our mission goes beyond just delivering courses online. We
                 wanted to create a vibrant community of learners, where
                 individuals can connect, collaborate, and learn from one
@@ -116,12 +116,9 @@ const About = () => {
         <ContactFormSection />
       </section>
 
-      <div className="">
-         <h2 className="mt-10 text-4xl font-semibold text-center text-white">Review form other Learners</h2>
-         <div></div>
-                <ReviewSlider ></ReviewSlider>
-        
-       
+      <div className="w-11/12 mx-auto max-w-maxContent">
+         <h2 className="mt-10 text-2xl sm:text-4xl font-semibold text-center text-white">Reviews from other Learners</h2>
+         <ReviewSlider />
       </div>
       <Footer />
     </div>

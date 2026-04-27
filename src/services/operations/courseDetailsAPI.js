@@ -35,7 +35,7 @@ export const getAllCourses = async () => {
     result = response?.data?.data
   } catch (error) {
     console.log("GET_ALL_COURSE_API API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return result
@@ -77,7 +77,7 @@ export const fetchCourseCategories = async () => {
     result = response?.data?.data
   } catch (error) {
     console.log("COURSE_CATEGORY_API API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   return result
 }
@@ -99,7 +99,7 @@ export const addCourseDetails = async (data, token) => {
     result = response?.data?.data
   } catch (error) {
     console.log("CREATE COURSE API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return result
@@ -122,7 +122,7 @@ export const editCourseDetails = async (data, token) => {
     result = response?.data?.data
   } catch (error) {
     console.log("EDIT COURSE API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return result
@@ -144,7 +144,7 @@ export const createSection = async (data, token) => {
     result = response?.data?.updatedCourse
   } catch (error) {
     console.log("CREATE SECTION API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return result
@@ -166,7 +166,7 @@ export const createSubSection = async (data, token) => {
     result = response?.data?.data
   } catch (error) {
     console.log("CREATE SUB-SECTION API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return result
@@ -188,7 +188,7 @@ export const updateSection = async (data, token) => {
     result = response?.data?.data
   } catch (error) {
     console.log("UPDATE SECTION API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return result
@@ -210,7 +210,7 @@ export const updateSubSection = async (data, token) => {
     result = response?.data?.data
   } catch (error) {
     console.log("UPDATE SUB-SECTION API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return result
@@ -232,7 +232,7 @@ export const deleteSection = async (data, token) => {
     result = response?.data?.data
   } catch (error) {
     console.log("DELETE SECTION API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return result
@@ -253,7 +253,7 @@ export const deleteSubSection = async (data, token) => {
     result = response?.data?.data
   } catch (error) {
     console.log("DELETE SUB-SECTION API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return result
@@ -279,7 +279,7 @@ export const fetchInstructorCourses = async (token) => {
     result = response?.data?.data
   } catch (error) {
     console.log("INSTRUCTOR COURSES API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return result
@@ -299,7 +299,7 @@ export const deleteCourse = async (data, token) => {
     toast.success("Course Deleted")
   } catch (error) {
     console.log("DELETE COURSE API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
 }
@@ -382,7 +382,7 @@ export const createRating = async (data, token) => {
   } catch (error) {
     success = false
     console.log("CREATE RATING API ERROR............", error)
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   toast.dismiss(toastId)
   return success
