@@ -11,6 +11,14 @@ function Dashboard() {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  if (profileLoading || authLoading) {
+    return (
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <div className="spinner"></div>
+      </div>
+    )
+  }
+
   return (
     <div className="relative flex min-h-[calc(100vh-3.5rem)]">
       {/* Mobile menu button */}
